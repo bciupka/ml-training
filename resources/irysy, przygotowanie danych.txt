@@ -1,0 +1,408 @@
+import numpy as np
+import pandas as pd
+
+# from sklearn import datasets
+# flowers = datasets.load_iris()
+
+
+#
+# features = flowers.data
+# target = flowers.target
+#
+# from sklearn.model_selection import train_test_split
+# x_train, x_test, y_train, y_test = train_test_split(features, target, test_size=0.3)
+#
+# from sklearn import tree
+# tree = tree.DecisionTreeClassifier()
+#
+# tree.fit(x_train, y_train)
+# predicted_classes = tree.predict(x_test)
+#
+# from sklearn.metrics import accuracy_score
+# print("Dokładność (accuracy): " + str(accuracy_score(y_test, predicted_classes)))
+
+# from sklearn import datasets, tree, neural_network, neighbors, ensemble
+# from sklearn.metrics import accuracy_score
+# from sklearn.model_selection import train_test_split
+#
+# flowers = datasets.load_iris()
+# features = flowers.data
+# target = flowers.target
+# x_train, x_test, y_train, y_test = train_test_split(features, target, test_size=0.3)
+#
+# tree = tree.DecisionTreeClassifier()
+# # nn = neural_network.MLPClassifier()   # sieć neuronowa
+# # knn = neighbors.KNeighborsClassifier()    # k najbliższych sąsiadów
+# # rf = ensemble.RandomForestClassifier()    # las losowy
+# tree.fit(x_train, y_train)
+#
+# predicted_classes = tree.predict(x_test)
+#
+# print("Dokładność (accuracy): " + str(accuracy_score(y_test, predicted_classes)))
+
+# from sklearn import datasets, tree, neural_network, neighbors, ensemble
+# from sklearn.metrics import accuracy_score
+# from sklearn.model_selection import train_test_split
+#
+# flowers = datasets.load_iris()
+# features = flowers.data
+# target = flowers.target
+# x_train, x_test, y_train, y_test = train_test_split(features, target, test_size=0.3, random_state=123)
+#
+# for clf in [tree.DecisionTreeClassifier(), neural_network.MLPClassifier(max_iter=2000),
+#             neighbors.KNeighborsClassifier(), ensemble.RandomForestClassifier(n_estimators=100)]:
+#     print(str(clf.__class__.__name__) + ": ", end='\t')
+#     for _ in range(10):
+#         clf.fit(x_train, y_train)
+#         predicted_classes = clf.predict(x_test)
+#         print("%.3f" % accuracy_score(y_test, predicted_classes), end='\t')
+#     print()
+# sys.exit(4)
+
+# from sklearn import datasets, tree, neural_network, neighbors, ensemble
+# from sklearn.metrics import accuracy_score
+# from sklearn.model_selection import train_test_split
+#
+#
+# flowers = datasets.load_iris()
+# target = flowers.target
+# features_orig = flowers.data
+#
+# print("            1 cecha     2 cechy     3 cechy     4 cechy")
+# print("Accuracy: ", end="\t")
+# for i in range(1, 5):
+#     features = features_orig[:, 0:i]
+#     x_train, x_test, y_train, y_test = train_test_split(features, target, test_size=0.3, random_state=123)
+#     clf = neighbors.KNeighborsClassifier()
+#     clf.fit(x_train, y_train)
+#     predicted_classes = clf.predict(x_test)
+#     print("%.3f" % accuracy_score(y_test, predicted_classes), end='\t\t')
+#
+# import seaborn as sns
+# df_sns = pd.DataFrame(features_orig, columns=["pierwsza", "druga", "trzecia", "czwarta"])
+# sns.pairplot(df_sns)
+# # penguins = sns.load_dataset("penguins")
+# # sns.pairplot(penguins)
+# plt.show()
+
+# sys.exit(4)
+
+################################################################################################
+################################    3. Przygotowanie danych     ################################
+################################################################################################
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# df = pd.read_csv('diabetes.csv')
+# print(df.columns)
+#
+# df.info()
+# print(df.info())
+
+#
+# print(df.head())
+#
+# print(df.describe())
+
+import matplotlib.pyplot as plt
+# df.hist()
+# plt.show()
+#
+# print(df.corr())
+#
+# import seaborn as sns
+# sns.heatmap(df.corr(), cmap='viridis')
+# plt.show()
+
+# numbers = np.random.randint(0, 10, 20)
+# print(numbers)
+# plt.plot(numbers)
+# plt.show()
+
+# x = [0]
+# for i in range(1, 15):
+#     x.append(x[i - 1] + np.random.randint(1, 4))
+# x = np.asarray(x)   # konwersja na tablicę numpy; nie jest konieczna
+# y = np.random.randint(0, 10, 15)
+# print("x: " + str(x))
+# print("y: " + str(y))
+# plt.xticks(np.arange(min(x), max(x)+1, 2.0))
+# plt.grid(True, which='major')
+# plt.plot(x, y)
+# plt.show()
+
+# x = np.random.random(100) * 10
+# y = np.random.random(100) * 10
+# plt.scatter(x, y)
+# plt.show()
+
+# i = 10
+# for _ in range(4):
+#     x = np.random.randint(0, 20, i)
+#     i *= 10
+#     plt.hist(x)
+#     plt.show()
+
+# i = 10
+# for _ in range(4):
+#     x = np.random.normal(2, 1, i)
+#     i *= 10
+#     plt.hist(x)
+#     plt.show()
+
+# np.random.seed(123)
+# df = pd.DataFrame(columns=["wzrost", "kolor oczu"])
+# for i in range(15):
+#     height = np.random.randint(150, 200)
+#     eye_color = np.random.choice(["brązowe", "zielone", "niebieskie"], p=[0.4, 0.3, 0.3])
+#     df = df.append({'wzrost': height, "kolor oczu": eye_color}, ignore_index=True)
+# print(df)
+#
+# df_orig = df.copy()
+# df = pd.get_dummies(df_orig, columns=['kolor oczu'], prefix="oczy")
+# print(df)
+#
+# sys.exit(4)
+
+# print()
+# df = pd.get_dummies(df_orig, columns=['kolor oczu'], prefix="oczy", drop_first=True)
+# print(df.head())
+
+# df = pd.DataFrame(columns=["wzrost", "kolor oczu (1-zielone, 2-niebieski, 3-brązowe)"])
+# for i in range(15):
+#     height = np.random.randint(150, 200)
+#     eye_color = np.random.choice(["1", "2", "3"], p=[0.4, 0.3, 0.3])
+#     df = df.append({'wzrost': height, "kolor oczu (1-zielone, 2-niebieski, 3-brązowe)": eye_color}, ignore_index=True)
+# print(df.head(10))
+
+# from sklearn.preprocessing import StandardScaler
+# df = pd.read_csv('diabetes.csv')
+# print(str(df.describe()) + "\n")
+# scaler = StandardScaler()
+# scaler.fit(df)
+# df_standarized_all = pd.DataFrame(scaler.transform(df), columns=df.columns)
+# print(df_standarized_all.describe())
+#
+# from sklearn.preprocessing import StandardScaler
+# df = pd.read_csv('diabetes.csv')
+# print(str(df.describe()) + "\n")
+# scaler = StandardScaler()
+# scaler.fit(df[["Insulin", "BMI"]])
+# df_standarized_two = df.copy()
+# df_standarized_two[["Insulin", "BMI"]] = scaler.transform(df[["Insulin", "BMI"]])
+# print(df_standarized_two.describe())
+
+# from sklearn.preprocessing import MinMaxScaler
+# df = pd.read_csv('diabetes.csv')
+# print(str(df.describe()) + "\n")
+# scaler = MinMaxScaler()
+# df_min_max = pd.DataFrame(scaler.fit_transform(df), columns=df.columns)
+# print(df_min_max.describe())
+
+# from sklearn import neighbors, ensemble
+# from sklearn.metrics import accuracy_score
+# from sklearn.model_selection import train_test_split
+# import pickle
+# import os
+#
+# df = pd.read_csv('diabetes.csv')
+# y = df['Outcome']
+# df.drop(columns='Outcome', inplace=True)    # pojedyncza kolumna lub lista kolumn
+# X = df
+#
+# acc_stratified = []
+# experiment_count = 300
+# os.makedirs("models/", exist_ok=True)
+# for i in range(experiment_count):
+#     x_train, x_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=i, stratify=y)
+#     clf = neighbors.KNeighborsClassifier()    # k najbliższych sąsiadów
+#     clf.fit(x_train, y_train)
+#     predicted_classes = clf.predict(x_test)
+#     acc_stratified.append(accuracy_score(y_test, predicted_classes))
+#     pickle.dump(clf, open("models/" + str(i), 'wb'))
+# print("Accuracy: %.3f +/- %.3f" % (np.mean(acc_stratified), np.std(acc_stratified)))
+#
+# acc_stratified = []
+#
+# for i in range(experiment_count):
+#     x_train, x_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=i, stratify=y)
+#     clf = pickle.load(open("models/" + str(i), 'rb'))
+#     predicted_classes = clf.predict(x_test)
+#     acc_stratified.append(accuracy_score(y_test, predicted_classes))
+# print("Accuracy: %.3f +/- %.3f" % (np.mean(acc_stratified), np.std(acc_stratified)))
+# sys.exit(5)
+
+# df = pd.DataFrame({"col_a": np.random.random_sample(8), "col_b": np.random.random_sample(8)})
+# df.iloc[[1, 3], 0] = np.nan
+# df.iloc[[4, 5], 1] = np.nan
+# print(df)
+# print()
+# print(df.dropna())
+# print()
+# print(df.dropna(subset=["col_b"]))
+#
+# sys.exit()
+
+# from sklearn import neighbors, ensemble
+# from sklearn.metrics import accuracy_score
+# from sklearn.model_selection import train_test_split
+# import pickle
+# import os
+#
+#
+# df = pd.read_csv('diabetes.csv')
+# y = df['Outcome']
+# df.drop(columns='Outcome', inplace=True)    # pojedyncza kolumna lub lista kolumn
+# X = df
+#
+# acc_stratified = []
+# experiment_count = 300
+# os.makedirs("models/", exist_ok=True)
+# for i in range(experiment_count):
+#     x_train, x_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=i, stratify=y)
+#     clf = neighbors.KNeighborsClassifier()    # k najbliższych sąsiadów
+#     clf.fit(x_train, y_train)
+#     predicted_classes = clf.predict(x_test)
+#     acc_stratified.append(accuracy_score(y_test, predicted_classes))
+# print("Accuracy: %.3f +/- %.3f" % (np.mean(acc_stratified), np.std(acc_stratified)))
+#
+# import matplotlib.pyplot as plt
+# cumulative_acc = np.zeros(len(acc_stratified))
+# for i in range(len(acc_stratified)):
+#     cumulative_acc[i] = np.mean(acc_stratified[: i + 1])
+#
+# plt.plot(list(range(experiment_count)), cumulative_acc)
+# plt.show()
+
+############################################# Braki w danych ##########################################################
+
+from sklearn import neighbors, ensemble, tree
+from sklearn.metrics import accuracy_score
+from sklearn.model_selection import train_test_split
+
+df = pd.read_csv('diabetes.csv')
+y = df['Outcome']
+df.drop(columns='Outcome', inplace=True)    # pojedyncza kolumna lub lista kolumn
+X = df
+
+x_train, x_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=123,
+                                                    stratify=y)
+x_train.info()
+neighbors_count = 10
+
+# pełne dane
+acc = []
+for i in range(neighbors_count):
+    clf = neighbors.KNeighborsClassifier(n_neighbors=i+1)
+    clf.fit(x_train, y_train)
+    predicted_classes = clf.predict(x_test)
+    acc.append(accuracy_score(y_test, predicted_classes))
+print("Accuracy (pełne dane): %.3f +/- %.3f" % (np.mean(acc), np.std(acc)))
+
+
+# # usunięcie części danych
+np.random.seed(123)
+for _ in range(int(0.1 * x_train.size)):
+    x_train.iloc[np.random.randint(x_train.shape[0]), np.random.randint(x_train.shape[1])] = np.NaN
+
+print(x_train.info())
+# print(x_train)
+x_train_orig = x_train.copy()
+y_train_orig = y_train.copy()
+
+# sys.exit(4)
+
+# # Wariant 1: wycięcie wierszy
+x_train['y'] = y_train
+x_train.dropna(inplace=True)
+y_train = x_train['y']
+x_train.drop(columns='y', inplace=True)
+
+acc = []
+for i in range(neighbors_count):
+    clf = neighbors.KNeighborsClassifier(n_neighbors=i+1)
+    clf.fit(x_train, y_train)
+    predicted_classes = clf.predict(x_test)
+    acc.append(accuracy_score(y_test, predicted_classes))
+print("Accuracy (wycięcie wierszy): %.3f +/- %.3f" % (np.mean(acc), np.std(acc)))
+
+# # Wariant 2: imputacja średnią
+x_train = x_train_orig.copy()
+y_train = y_train_orig.copy()
+
+from sklearn.impute import SimpleImputer
+mean_imputer = SimpleImputer(strategy='mean')
+x_train.iloc[:, :] = mean_imputer.fit_transform(x_train)
+print(x_train.info())
+
+acc = []
+for i in range(neighbors_count):
+    clf = neighbors.KNeighborsClassifier(n_neighbors=i+1)
+    clf.fit(x_train, y_train)
+    predicted_classes = clf.predict(x_test)
+    acc.append(accuracy_score(y_test, predicted_classes))
+print("Accuracy (imputacja średnią): %.3f +/- %.3f" % (np.mean(acc), np.std(acc)))
+
+
+# # Wariant 3: imputacja medianą
+x_train = x_train_orig.copy()
+y_train = y_train_orig.copy()
+
+from sklearn.impute import SimpleImputer
+median_imputer = SimpleImputer(strategy='median')
+x_train.iloc[:, :] = median_imputer.fit_transform(x_train)
+print(x_train.info())
+
+acc = []
+for i in range(neighbors_count):
+    clf = neighbors.KNeighborsClassifier(n_neighbors=i+1)
+    clf.fit(x_train, y_train)
+    predicted_classes = clf.predict(x_test)
+    acc.append(accuracy_score(y_test, predicted_classes))
+print("Accuracy (imputacja medianą): %.3f +/- %.3f" % (np.mean(acc), np.std(acc)))
+
+
+# # Wariant 4: imputacja stałą = 0
+x_train = x_train_orig.copy()
+y_train = y_train_orig.copy()
+
+from sklearn.impute import SimpleImputer
+constant_imputer = SimpleImputer(strategy='constant', fill_value=0)
+x_train.iloc[:, :] = constant_imputer.fit_transform(x_train)
+print(x_train.info())
+
+acc = []
+for i in range(neighbors_count):
+    clf = neighbors.KNeighborsClassifier(n_neighbors=i+1)
+    clf.fit(x_train, y_train)
+    predicted_classes = clf.predict(x_test)
+    acc.append(accuracy_score(y_test, predicted_classes))
+print("Accuracy (imputacja stałą): %.3f +/- %.3f" % (np.mean(acc), np.std(acc)))
+
+
+############################################## Selekcja cech ##########################################################
+
+import numpy as np
+import pandas as pd
+from sklearn.feature_selection import RFE, SelectKBest, chi2
+from sklearn.linear_model import LogisticRegression
+np.set_printoptions(linewidth=250)
+
+df = pd.read_csv('diabetes.csv')
+y = df['Outcome']
+df.drop(columns='Outcome', inplace=True)
+df['zera'] = 0
+df['jedynki'] = 1
+df['losowe_1'] = np.random.random(df.shape[0])
+df['losowe_10'] = np.random.random(df.shape[0]) * 10
+df['losowe_100'] = np.random.random(df.shape[0]) * 100
+X = df
+
+selector = SelectKBest(chi2, k=3).fit(X, y)
+cols = selector.get_support(indices=True)
+x = X.iloc[:, cols].copy()
+print(x.columns.values)
+for k in range(len(selector.scores_)):
+    print("{}\t{:0.2f}".format(X.columns.values[k], selector.scores_[k]))
