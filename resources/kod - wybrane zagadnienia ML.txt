@@ -1,0 +1,38 @@
+####################################### Wybrane zagadnienia uczenia maszynowego ########################################
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score
+from sklearn.model_selection import train_test_split
+
+df = pd.read_csv('diabetes.csv')
+y = df['Outcome']
+df.drop(columns='Outcome', inplace=True)
+X = df
+
+x_train, x_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=123,
+                                                    stratify=y)
+
+clf = LogisticRegression(max_iter=200)
+clf.fit(x_train, y_train)
+predicted_classes = clf.predict(x_test)
+print(accuracy_score(y_test, predicted_classes))
+
+# Cwiczenie 4.1
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_absolute_error
+from sklearn.model_selection import train_test_split
+
+df = pd.read_csv('diabetes.csv')
+y = df['Age']
+df.drop(columns='Age', inplace=True)
+X = df
+
+mae = []
+
+for i in range(30):
+    x_train, x_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=i)
+    clf = LinearRegression()
+    clf.fit(x_train, y_train)
+    predicted_values = clf.predict(x_test)
+    mae.append(mean_absolute_error(y_test, predicted_values))
+    train_predicted = clf.predict(x_train)
+print("Błąd MAE: %.3f +/- %.3f" % (np.mean(mae), np.std(mae)))
