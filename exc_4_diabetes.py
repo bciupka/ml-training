@@ -5,6 +5,7 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
 import os
+import matplotlib.pyplot as plt
 
 features = pd.read_csv("./resources/diabetes.csv")
 target = features.loc[:, "Outcome"]
@@ -39,3 +40,10 @@ for i in os.listdir("./exc_4_models"):
     scores.append(score)
 
 print(np.mean(scores), np.std(scores))
+
+averages = []
+for i in range(count):
+    averages.append(np.mean(scores[: i + 1]))
+
+plt.plot(range(1, 301), averages)
+plt.show()
